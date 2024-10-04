@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Stock Data Viewer</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <style>
+      body {
+        background-color: #3d3d3d; /* Updated background color */
+        color: #d1d1d1; /* Light text color */
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        padding-top: 20px;
+      }
+      .container {
+        max-width: 1200px;
+      }
+      .header {
+        background-color: #2f2f2f;
+        padding: 20px;
+        border-radius: 8px;
+        margin-bottom: 20px;
+        text-align: center;
+      }
+      .header h1 {
+        margin: 0;
+        font-size: 1.8rem;
+        color: #ffffff;
+      }
+      .table {
+        background-color: #2b2b2b;
+        color: #d1d1d1;
+        border-radius: 8px;
+        overflow: hidden;
+      }
+      .table thead {
+        background-color: #4a4a4a;
+      }
+      .table th,
+      .table td {
+        border: none;
+        padding: 12px;
+        cursor: pointer; /* Change cursor to pointer for clickable headers */
+      }
+      .positive {
+        color: #4caf50; /* Green for positive values */
+      }
+      .negative {
+        color: #f44336; /* Red for negative values */
+      }
+      .table tbody tr:nth-child(even) {
+        background-color: #404040;
+      }
+      .table tbody tr:hover {
+        background-color: #555555;
+      }
+      .sort-arrow {
+        margin-left: 5px;
+        font-size: 0.8rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h1>Stock Data Viewer</h1>
+        <p id="averageChange">Daily Update: Calculating...</p>
+          </div>
+          
+      </div>
+
+      <div class="table-responsive">
+        <table class="table table-hover" id="stockTable">
+          <thead>
+            <tr>
+              <th onclick="sortTable('ticker')">
+                Ticker<span class="sort-arrow" id="ticker-arrow">↑↓</span>
+              </th>
+              <th onclick="sortTable('name')">
+                Name<span class="sort-arrow" id="name-arrow">↑↓</span>
+              </th>
+              <th onclick="sortTable('price')">
+                Price (USD)<span class="sort-arrow" id="price-arrow">↑↓</span>
+              </th>
+              <th onclick="sortTable('smartScore')">
+                Smart Score<span class="sort-arrow" id="smartScore-arrow"
+                  >↑↓</span
+                >
+              </th>
+              <th onclick="sortTable('change')">
+                Change<span class="sort-arrow" id="change-arrow">↑↓</span>
+              </th>
+              <th onclick="sortTable('marketCap')">
+                Market Cap<span class="sort-arrow" id="marketCap-arrow"
+                  >↑↓</span
+                >
+              </th>
+              <th onclick="sortTable('bestConsensus')">
+                Consensus<span class="sort-arrow" id="bestConsensus-arrow"
+                  >↑↓</span
+                >
+              </th>
+              <th onclick="sortTable('pe')">
+                P/E Ratio<span class="sort-arrow" id="pe-arrow">↑↓</span>
+              </th>
+              <th onclick="sortTable('buzz')">
+                Buzz<span class="sort-arrow" id="buzz-arrow">↑↓</span>
+              </th>
+              <th
+                onclick="sortTable('targetPricePercentChange')"
+                id="targetPricePercentChange-header"
+              >
+                Price Target<span
+                  class="sort-arrow"
+                  id="targetPricePercentChange-arrow"
+                  >↑↓</span
+                >
+              </th>
+
+              <th onclick="sortTable('investorSentiment')">
+                Investor Sentiment<span
+                  class="sort-arrow"
+                  id="investorSentiment-arrow"
+                  >↑↓</span
+                >
+              </th>
+            </tr>
+          </thead>
+
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+    <script src="/script.js"></script>
+  </body>
+</html>
